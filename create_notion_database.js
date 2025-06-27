@@ -1,9 +1,12 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 const fs = require('fs');
 const fetch = require('node-fetch');
 
 // Replace with your actual integration token and parent page ID
-const NOTION_TOKEN = "secret_YourIntegrationToken";
-const PARENT_PAGE_ID = "your-page-id";
+const NOTION_TOKEN = process.env.integrationToken || "your-secret-integration-token";
+const PARENT_PAGE_ID = process.env.pageId || "your-page-id";
 
 // Read the JSON template
 const rawData = fs.readFileSync('notion_task_prioritization_template.json');
