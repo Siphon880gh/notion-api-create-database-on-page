@@ -5,15 +5,19 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 
 // Replace with your actual integration token and parent page ID
-const NOTION_TOKEN = process.env.integrationToken || "your-secret-integration-token";
-const PARENT_PAGE_ID = process.env.pageId || "your-page-id";
+const NOTION_TOKEN = process.env.NOTION_TOKEN || "your-secret-integration-token";
+const PARENT_PAGE_ID = process.env.PARENT_PAGE_ID || "your-page-id";
+const WORKSPACE_JSON = process.env.WORKSPACE_JSON || "workspace.json";
 
 // Read the JSON template
-const rawData = fs.readFileSync('notion_task_prioritization_template.json');
-const payload = JSON.parse(rawData);
+let rawData = fs.readFileSync(WORKSPACE_JSON);
+let payload = JSON.parse(rawData);
 
 // Set the parent page ID dynamically
-payload.parent.page_id = PARENT_PAGE_ID;
+payload.parent = {
+  "type": "page_id",
+  "page_id": PARENT_PAGE_ID
+}
 
 fetch('https://api.notion.com/v1/databases', {
   method: 'POST',
