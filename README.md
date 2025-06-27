@@ -1,6 +1,6 @@
-# Notion Database Creator
+# Notion API - Create Database on Page
 
-This tool allows you to easily create Notion databases by generating JSON templates with ChatGPT and uploading them through the Notion API.
+Create Notion databases by generating JSON templates with ChatGPT and uploading them through the Notion API.
 
 ## 🎯 How It Works
 
@@ -33,7 +33,22 @@ WORKSPACE_JSON=your-template-file.json
 
 3. **Get your Notion credentials:**
    - **Integration Token**: Create a new integration at [https://www.notion.so/my-integrations](https://www.notion.so/my-integrations)
+
+
+	1. Add an integration
+	   ![](docs/20250627013037.png)
+	2. You will name your integration. Do not use the word "Notion" in the name - that's blocked. Select the Notion Workspace that your code will access. Choose Internal or Public purpose. Add your logo.
+	   ![](docs/20250627013300.png)
+	3. After your integration is finished creating, go back into editing it. You need to scope the pages at the "Access" tab:
+	   ![](docs/20250627011848.png)
+	4. Note that Notion as of June 2025 is glitchy. It may look like the adding page access is unchanged. Just refresh the web browser:
+	   ![](docs/20250627012030.png)
+
+	5. Finally, copy the integration token at the "Configuration" tab:
+	   ![](docs/20250627012218.png)
+
    - **Parent Page ID**: Copy the page ID from your Notion page URL (the 32-character string after the last `/`). For example, if the page URL in the web app is `https://www.notion.so/Test-21fdd9f91fa080f1abd9e9dd2ebedd19`, then the page ID is `21fdd9f91fa080f1abd9e9dd2ebedd19`.
+	   ![](docs/20250627012721.png)
 
 ### Usage
 
