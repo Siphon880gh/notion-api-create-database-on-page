@@ -72,7 +72,29 @@ Please provide the JSON in Notion API format that I can upload programatically."
 2. **Save the JSON template:**
 Save ChatGPT's response as a `.json` file (e.g., `my-database.json`)
 
-3. **Deploy your database:**
+3. **Decide if you want inline or as a page:**
+
+Inline:
+![](docs/20250627231116.png)
+
+Page:
+![](docs/20250627231335.png)
+
+Page is default. If you want inline, you can add `"is_inline": true` in the JSON file or programmatically add it in the script like was done here:
+```
+// Set the parent page ID dynamically
+payload.parent = {
+  "type": "page_id",
+  "page_id": PARENT_PAGE_ID
+}
+
+// And you would add:
+payload.is_inline = true;
+```
+^ And even better, you could abstract that out into .env file.
+
+4. **Deploy your database:**
+
 ```bash
 # Using default template
 npm run deploy
